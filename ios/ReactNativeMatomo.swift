@@ -41,12 +41,18 @@ class ReactNativeMatomo: NSObject {
     @objc(trackView:withTitle:withResolver:withRejecter:)
     func trackView(path:String, title:String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) -> Void {
         if (tracker != nil) {
-            let views = path.components(separatedBy: "/")
-            tracker.track(view: views)
+            // from Java implementation: String actualTitle = title == null ? route : title;
+            var pathParts = path.components(separatedBy: "/")
+            if(!title.isEmpty){
+                // Just use the [title]
+                pathParts = title.components(separatedBy: "/")
+            }
+            let _url = URL(string: "http://\(Application.makeCurrentApplication().bundleIdentifier ?? "unknown")\(path)")
+            tracker.track(view: pathParts, url:_url)
             resolve(nil)
         } else {
             reject("not_initialized", "Matomo not initialized. TrackView failed", nil)
-        }
+        }
     }
 
     @objc(trackGoal:withValues:withResolver:withRejecter:)

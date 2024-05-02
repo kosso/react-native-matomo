@@ -27,7 +27,10 @@ RCT_EXTERN_METHOD(trackEvent:(NSString* _Nonnull)category withAction:(NSString* 
 RCT_EXTERN_METHOD(setAppOptOut:(BOOL _Nonnull) optOut
                   withResolver:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject);
-
+RCT_EXTERN_METHOD(trackSiteSearch:(NSString* _Nonnull)query withCategory:(NSString* _Nullable)category withResultCount:(NSNumber* _Nonnull)resultCount
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject);
+                  
 RCT_EXTERN_METHOD(trackAppDownload:(RCTPromiseResolveBlock)resolve withRejecter:(RCTPromiseRejectBlock)reject);
 RCT_EXTERN_METHOD(isInitialized:(RCTPromiseResolveBlock)resolve withRejecter:(RCTPromiseRejectBlock)reject);
 

@@ -46,6 +46,14 @@ export function trackEvent(
   });
 }
 
+export function trackSiteSearch(
+  query: string,
+  category?: string,
+  resultCount?: number
+): Promise<void> {
+  return ReactNativeMatomo.trackSiteSearch(query, category, resultCount);
+}
+
 export function trackGoal(goalId: number, revenue: number): Promise<void> {
   return ReactNativeMatomo.trackGoal(goalId, { revenue });
 }

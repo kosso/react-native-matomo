@@ -108,6 +108,14 @@ use trackEvent.
 Matomo.trackEvent('category', 'action', 'label', 1000);
 ```
 
+#### Track Site Search
+
+Track internal 'site' searches. (Requires Site Search to be active in Matomo website settings.) Parameters are `query`, `category` and `resultCount`.
+
+```javascript
+Matomo.trackSiteSearch('The query', 'Movies', 12);
+```
+
 #### Track goals
 
 If you want to trigger a conversion manually or track some user interaction simply call the method trackGoal. Read more about what is a [Goal in Matomo](http://matomo.org/docs/tracking-goals-web-analytics/).
@@ -172,3 +180,13 @@ MIT
 ---
 
 Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
+
+
+---
+
+## 1.0.4 fork changes
+
+- Add ability to build on tvOS (while using `react-native-tvos`).
+- Added `trackSiteSearch` method. 
+- Modified `trackView` method to behave like Android, while also sending the `url` parameter.
+

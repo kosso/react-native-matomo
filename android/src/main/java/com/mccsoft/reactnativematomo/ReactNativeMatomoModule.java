@@ -102,6 +102,16 @@ public class ReactNativeMatomoModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void trackSiteSearch(String query, @Nullable String category, @Nullable Number resultCount, Promise promise) {
+    try {
+      getTrackHelper().search(query).category(category).resultCount(resultCount).with(tracker);
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject(e);
+    }
+  }
+  
+  @ReactMethod
   public void trackGoal(int goalId, ReadableMap values) {
     Float revenue = null;
     if (values.hasKey("revenue") && !values.isNull("revenue")) {
